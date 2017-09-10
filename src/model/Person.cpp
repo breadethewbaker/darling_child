@@ -1,5 +1,6 @@
 // The superclass for all person entities in the game
 #include <stdlib.h>
+#include <iostream>
 
 class Person() {
 
@@ -13,5 +14,8 @@ class Person() {
 
   Person () {
     age = rand() % 120;
+    int printAge() {
+      std.out(age);
+    }
   }
 }
