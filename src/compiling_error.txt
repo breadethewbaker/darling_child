@@ -1,8 +1,0 @@
-In file included from /home/brett/projects/edu_tyc/src/Driver.cpp:3:0:
-/home/brett/projects/edu_tyc/src/model.h:4:15: error: expected unqualified-id before ‘)’ token
- class Person ();
-               ^
-/home/brett/projects/edu_tyc/src/Driver.cpp: In function ‘int main()’:
-/home/brett/projects/edu_tyc/src/Driver.cpp:6:10: error: aggregate ‘Person one_guy’ has incomplete type and cannot be defined
-   Person one_guy;
-          ^

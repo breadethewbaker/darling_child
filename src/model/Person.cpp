@@ -4,18 +4,12 @@
 
 class Person() {
 
-  string fName, lName;
-  int age;
-  short personality;  // myers-briggs maybe?
+  Person (char f[], char l[], int a) {
+    _age = a;
+    _firstN = f[];
+    _lastN = l[];
 
-  int willingness; // likelihood to follow command given by authority
-  int temperament; // mulitplier for mood changes
-  int[] mood;
-
-  Person () {
-    age = rand() % 120;
-    int printAge() {
-      std.out(age);
-    }
+    Public:
+      std.out(_age);
   }
 }
