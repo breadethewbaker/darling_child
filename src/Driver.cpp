@@ -1,10 +1,9 @@
 // start a new game when run
 #include <iostream>
-#include "person.h"
+#include "driver.h"
 
 int main() {
-  Person one_guy;
-  one_guy = Person("Brett", "Baker")
+  Person one_guy("Brett", "Baker");
   one_guy.printAge();
   return 0;
 }

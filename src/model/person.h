@@ -1,3 +1,4 @@
+// The superclass for all person entities in the game
 #ifndef PERSON_H
 #define PERSON_H
 
@@ -6,18 +7,20 @@
 
 class Person {
 
-  char _firstN [10], _lastN [10];
+private:
+  const char* _firstN;
+  const char* _lastN;
   int _age;
   short _personality;  // myers-briggs maybe?
 
   int _willingness; // likelihood to follow command given by authority
   int _temperament; // mulitplier for mood changes
-  int[] _mood;
+  int _mood[2]; // can affect willingness
 
-  Person (char f[], char l[]);
+public:
+    Person(const char* f, const char* l);
 
-  Public:
     void printAge();
-}
+};
 
 #endif
