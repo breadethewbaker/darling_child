@@ -1,5 +1,4 @@
 // start a new game when run
-#include <iostream>
 #include "driver.h"
 
 int main() {

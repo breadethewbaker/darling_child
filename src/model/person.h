@@ -4,6 +4,8 @@
 
 #include <stdlib.h>
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
 
 class Person {
 
@@ -11,16 +13,23 @@ private:
   const char* _firstN;
   const char* _lastN;
   int _age;
-  short _personality;  // myers-briggs maybe?
 
   int _willingness; // likelihood to follow command given by authority
-  int _temperament; // mulitplier for mood changes
+
   int _mood[2]; // can affect willingness
+  int _baseWillingness; // added to willingness, varies by individual
+
+  int _tiredness; // can affect mood
+  int _temperament; // mulitplier for mood changes
 
 public:
     Person(const char* f, const char* l);
 
     void printAge();
+
+    void affectMood(int goodPts, int badPts);
+
+    void sleep();
 };
 
 #endif
