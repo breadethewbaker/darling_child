@@ -41,3 +41,6 @@ void Person::updateStats() {
   _willingness -= _mood / 25;
   _mood = _tiredness * _temperament;
 }
+void Person::printStats() {
+  std::cout << _tiredness << "\n" << _willingness << "\n" << _mood;
+}

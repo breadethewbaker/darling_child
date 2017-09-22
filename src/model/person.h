@@ -33,6 +33,8 @@ public:
   void timeEffects(int x);
 
   void sleep(unsigned int t);
+
+  void printStats();
 };
 
 #endif
