@@ -23,13 +23,17 @@ private:
   int _temperament; // mulitplier for mood changes
 
 public:
-    Person(const char* f, const char* l);
+  Person(const char* f, const char* l);
 
-    void printAge();
+  void printAge();
 
-    void affectMood(int goodPts, int badPts);
+  void updateMood();
 
-    void sleep();
+  void reactEvent(int goodPts, int badPts);
+
+  void timeEffects(int x);
+
+  void sleep(int t);
 };
 
 #endif
