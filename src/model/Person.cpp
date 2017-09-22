@@ -1,30 +1,43 @@
 #include "person.h"
 
-Person::Person(const char* f, const char* l) {
+Person::Person(const char* f, const char* l) : _firstN(f), _lastN(l) {
   _age = rand() % 120;
-  _firstN = f;
-  _lastN = l;
   _temperament = rand() % 16;
   _tiredness = 0; //out of 100
-  _willingness = rand() % 100;
   _baseWillingness = rand() % 70;
+  _willingness = rand() % (100 - _baseWillingness);
   _mood = rand() % 1600;
 }
 
-//using namespace std;
 void Person::printAge() {
   std::cout << _age;
 }
-void Person::timeEffects(int x) {
-  _tiredness += x;
-  
+void Person::timeEffects(int t) {
+  if (_tiredness > 120) {
+    //insert rampage here
+    std::cout << "rampaging";
+    int x;
+    std::cin >> x;
+    this->sleep(12);
+  }
+  else if (_tiredness < 100) {
+    _tiredness += t;
+  }
+  else {
+    this->sleep(t/5);
+  }
+  this->updateStats();
 }
-void Person::updateMood() {
-  _mood = _tiredness * _temperament;
-}
-void Person::sleep(int t) {
-  tiredness
+void Person::sleep(unsigned int t) {
+  _tiredness -= t * 10;
+  _willingness = rand() % (100 - _baseWillingness);
+  clock_t goal = t + clock();
+  while (goal > clock());
 }
 void Person::reactEvent(int g,int b) {
-  _tiredness += (2*g/3) + b
+  _tiredness += (2*g/3) + b;
+}
+void Person::updateStats() {
+  _willingness -= _mood / 25;
+  _mood = _tiredness * _temperament;
 }
