@@ -31,7 +31,7 @@ void Person::timeEffects(int t) {
 void Person::sleep(unsigned int t) {
   if (_tiredness - t > 0) {
     _tiredness -= t * 10;
-  } else { _triedness = 0; }
+  } else { _tiredness = 0; }
   _willingness = rand() % (100 - _baseWillingness);
   clock_t goal = t + clock();
   while (goal > clock());
