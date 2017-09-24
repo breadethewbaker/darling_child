@@ -10,7 +10,7 @@ Person::Person(const char* f, const char* l) : _firstN(f), _lastN(l) {
 }
 
 void Person::printAge() {
-  std::cout << _age;
+  std::cout << _age << "\n";
 }
 void Person::timeEffects(int t) {
   if (_tiredness > 120) {
@@ -19,21 +19,19 @@ void Person::timeEffects(int t) {
     int x;
     std::cin >> x;
     this->sleep(12);
-  }
-  else if (_tiredness < 100) {
+  } else if (_tiredness < 100) {
     _tiredness += t;
-  }
-  else {
+  } else {
     this->sleep(t/5);
   }
   this->updateStats();
 }
 void Person::sleep(unsigned int t) {
-  if (_tiredness - t > 0) {
+  if (_tiredness - (t * 10) > 0) {
     _tiredness -= t * 10;
   } else { _tiredness = 0; }
   _willingness = rand() % (100 - _baseWillingness);
-  clock_t goal = t + clock();
+  int goal = t + clock();
   while (goal > clock());
 }
 void Person::reactEvent(int g,int b) {
@@ -42,6 +40,7 @@ void Person::reactEvent(int g,int b) {
 void Person::updateStats() {
   _willingness -= _mood / 25;
   _mood = _tiredness * _temperament;
+  if (_mood > 1600) { _mood = 1600; }
 }
 void Person::printStats() {
   std::cout << _tiredness << "\n" << _willingness << "\n" << _mood;
