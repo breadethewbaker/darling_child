@@ -21,6 +21,8 @@ private: // Non-derivative stat variables labeled DIRECT
   int _tiredness; // DIRECT :can affect mood
   int _temperament; // multiplier for mood changes
 
+  int _asleep[2]; // 0:1 if sleeping, 1:game_time to stop sleeping
+
 public:
   Person(const char* f, const char* l);
 
@@ -30,9 +32,9 @@ public:
 
   void reactEvent(int goodPts, int badPts);
 
-  void timeEffects(int x);
+  void timeEffects(unsigned int d, unsigned int t);
 
-  void sleep(unsigned int t);
+  void sleep(unsigned int d, unsigned int t);
 
   void printStats();
 };

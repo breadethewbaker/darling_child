@@ -7,34 +7,46 @@ Person::Person(const char* f, const char* l) : _firstN(f), _lastN(l) {
   _baseWillingness = rand() % 70;
   _willingness = rand() % (100 - _baseWillingness);
   _mood = rand() % 1600;
+  _asleep[0] = 0;
 }
 
 void Person::printAge() {
   std::cout << _age << "\n";
 }
-void Person::timeEffects(int t) {
-  if (_tiredness > 120) {
-    //insert rampage here
-    std::cout << "rampaging";
-    int x;
-    std::cin >> x;
-    this->sleep(12);
-  } else if (_tiredness < 100) {
-    _tiredness += t;
-  } else {
-    this->sleep(t/5);
-  }
-  this->updateStats();
+void Person::timeEffects(unsigned int d, unsigned int t) {
+  if (_asleep[0] == 0) {
+    if (_tiredness > 120) {
+      //insert rampage here
+      std::cout << "rampaging";
+      int x;
+      std::cin >> x;
+      this->sleep(12, t);
+    } else if (_tiredness < 100) {
+      _tiredness += d;
+    } else {
+      this->sleep(d/5, t);
+    }
+    this->updateStats();
+  } else { this->sleep(d,t); }
 }
-void Person::sleep(unsigned int t) {
-  if (_tiredness - (t * 10) > 0) {
-    _tiredness -= t * 10;
-  } else { _tiredness = 0; }
+
+// awakens or puts to sleep Person and updates stats
+void Person::sleep(unsigned int d, unsigned int t) {
+  if (_asleep[0] == 0) {
+    if (_tiredness - (d * 10) > 0) {
+      _tiredness -= d * 10;
+    } else {
+      _tiredness = 0;
+      _asleep[0] = 1;
+      _asleep[1] = t+d;
+    }
+  } else if (t >= _asleep[1]){
+    _asleep[0] = 0;
+  }
   _willingness = rand() % (100 - _baseWillingness);
-  int goal = t + clock();
-  while (goal > clock());
 }
 void Person::reactEvent(int g,int b) {
+  _asleep[0] = _asleep[0] == 1 ? 0:0;
   _tiredness += (2*g/3) + b;
 }
 void Person::updateStats() {
