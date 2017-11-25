@@ -36,7 +36,7 @@ public:
 
   void sleep(unsigned int d, unsigned int t);
 
-  void printStats();
+  int* printStats();
 };
 
 #endif

@@ -45,15 +45,20 @@ void Person::sleep(unsigned int d, unsigned int t) {
   }
   _willingness = rand() % (100 - _baseWillingness);
 }
+
 void Person::reactEvent(int g,int b) {
   _asleep[0] = _asleep[0] == 1 ? 0:0;
   _tiredness += (2*g/3) + b;
 }
+
 void Person::updateStats() {
   _willingness -= _mood / 25;
   _mood = _tiredness * _temperament;
   if (_mood > 1600) { _mood = 1600; }
 }
-void Person::printStats() {
-  std::cout << _tiredness << "\n" << _willingness << "\n" << _mood;
+
+int* Person::printStats() {
+  int arr[3] = {_tiredness, _willingness, _mood};
+  int *retVal = arr;
+  return retVal;
 }

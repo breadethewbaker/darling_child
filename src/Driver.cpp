@@ -6,8 +6,10 @@ int main() {
   //one_guy.printAge();
   int game_time = 0;
   while(1) {
-    one_guy.timeEffects(10,game_time);
-    one_guy.printStats();
+    one_guy.timeEffects(1,game_time);
+    for (int i=0;i<3;i++) {
+      std::cout << *(one_guy.printStats() + i);
+    }
     tick(5);
     game_time += 1;
   }
